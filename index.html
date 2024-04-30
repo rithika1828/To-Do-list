@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>T0-Do-List</title>
+    <!--Bootstrap cdn-->
+    <script src="https://kit.fontawesome.com/35628dac7d.js" crossorigin="anonymous"></script>
+    <!--font awesome icon link-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+     <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="addTask">
+            <input type="text" placeholder="Add a Tasks">
+            <button>Add</button>
+        </div>
+        <ol class="Pending">
+            <h3>Pending</h3>
+
+            </ol>
+        <ol class="Completed">
+            <h3>Completed</h3>
+
+            
+            </ol>
+        </div>
+
+    <script>
+        const input = document.querySelector('input');
+        const btn = document.querySelector('.addTask > button');
+
+        btn.addEventListener('click', addlist);
+        input.addEventListener('keyup', (e)=>{
+            (e.keyCode === 13 ? addlist(e) : null)
+        })
+        
+        function addlist(e){
+           const Pending = document.querySelector('.Pending');
+           const Completed = document.querySelector('.Completed');
+
+           const newli = document.createElement('li');
+           const checkBtn = document.createElement('button');
+           const delBtn =  document.createElement('button');
+
+           checkBtn.innerHTML ='<i class="fa-solid fa-check"></i>';
+           delBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
+
+           if( input.value !==''){
+            newli.textcontent = input.value;
+            input.value = '';
+            Pending.appendChild(newli);
+            newli.appendChild(checkBtn);
+            newli.appendChild(delBtn);
+           }
+
+           checkBtn.addEventListener('click', function(){
+            const parent = this.parentNode;
+            parent.remove();
+            completed.appendChild('parent');
+            checkBtn.style.display = 'none';
+           });
+
+           delbtn.addEventListener("click",function(){
+            const parent = this.parentNode;
+            parent.remove();
+           });
+
+        }
+    </script>
+    
+</body>
+</html>
